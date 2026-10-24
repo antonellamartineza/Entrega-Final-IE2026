@@ -121,14 +121,24 @@ h3{
 }
 
 header { text-align:center; }
-.herramientas {
+.herramientas, .reflexion, .contacto {
+    grid-column: 1 / -1;
     text-align: center;
-    padding: 3em 1em;
-    margin-top: 3em;
-    background: #13294b;
+    padding: 2em 1.5em;
     border-radius: 20px;
     box-shadow: 0 8px 30px rgba(0,0,0,0.4);
 }
+
+.herramientas { background: #13294b; }
+
+.reflexion {
+    background: #1d4380;
+    padding: 4em 2em;
+    font-size: 1.2em;
+}
+
+.contacto { background: #2f6bd1; }
+.contacto a { color: #ffffff; }
 /* --- Media Query para pantallas pequeñas --- */
 @media (max-width: 900px) {
     
