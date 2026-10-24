@@ -121,6 +121,14 @@ h3{
 }
 
 header { text-align:center; }
+.herramientas {
+    text-align: center;
+    padding: 3em 1em;
+    margin-top: 3em;
+    background: #13294b;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+}
 /* --- Media Query para pantallas pequeñas --- */
 @media (max-width: 900px) {
     
