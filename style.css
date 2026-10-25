@@ -1,9 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
 
-/* --- Estilos generales --- */
-html {
-    scroll-behavior: smooth;                     /* 1 */
-}
+html { scroll-behavior: smooth; }                /* 1 */
 
 body {
     font-family: 'DM Sans', sans-serif;
@@ -14,28 +11,17 @@ body {
     line-height: 1.6;
 }
 
-h1, h2 {
-    font-family: 'Outfit', sans-serif;
-    color: #ffffff;
-}
+h1, h2 { font-family: 'Outfit', sans-serif; color: #ffffff; }
+h3 { font-family: 'DM Sans', sans-serif; font-size: 1em; }
+section { scroll-margin-top: 8em; }
 
-h3 {
-    font-family: 'DM Sans', sans-serif;
-    font-size: 1em;
-}
-
-section {
-    scroll-margin-top: 8em;
-}
-
-/* --- Cabecera fija --- */
 header {
     position: sticky;                            /* 2 */
     top: 0;
     z-index: 10;
     text-align: center;
-    padding: 1em 0 0.6em;
-    background: rgba(11, 29, 58, 0.75);
+    padding: 1em 0 0.8em;
+    background: rgba(11, 29, 58, 0.8);
     backdrop-filter: blur(10px);                 /* 3 */
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
@@ -43,7 +29,7 @@ header {
 header h1 {
     margin: 0;
     font-size: clamp(1.8rem, 4vw, 2.8rem);
-    text-shadow: 0 0 20px rgba(165, 136, 244, 0.7);  /* 4 */
+    text-shadow: 0 0 20px rgba(165, 136, 244, 0.7);   /* 4 */
     letter-spacing: 1px;                         /* 5 */
     animation: aparecer 1.2s ease-out;           /* 6 */
 }
@@ -57,22 +43,26 @@ nav {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1.5em;
-    margin-top: 0.4em;
+    gap: 0.8em;
+    margin-top: 0.8em;
 }
 
 nav a {
-    color: #ffffff;
+    padding: 0.4em 1.3em;
+    border-radius: 50px;
+    background-color: #a588f4;
+    color: #0b1d3a;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
     text-decoration: none;
-    transition: color 0.2s, transform 0.2s;      /* 7 */
+    transition: transform 0.2s, background-color 0.2s;   /* 7 */
 }
 
 nav a:hover {
-    color: #a588f4;
-    transform: translateY(-2px);                 /* 8 */
+    background-color: #ffffff;
+    transform: translateY(-3px);                 /* 8 */
 }
 
-/* --- Contenedor principal: tareas | texto | tareas --- */
 #container {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
@@ -82,16 +72,11 @@ nav a:hover {
     margin: 2.5em auto;
 }
 
-/* --- Texto central --- */
 .intro {
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-}
-
-.intro p {
-    line-height: 1.6;
 }
 
 .boton {
@@ -112,7 +97,6 @@ nav a:hover {
     box-shadow: 0 10px 28px rgba(165, 136, 244, 0.6);
 }
 
-/* --- Galerías de tareas (4 a cada lado) --- */
 .galeria {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -120,18 +104,14 @@ nav a:hover {
 }
 
 .tarjeta {
-    background-color: #13294b;
+    background-color: #2e2060;
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 10px;
     overflow: hidden;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.tarjeta a {
-    display: block;
-    color: inherit;
-    text-decoration: none;
-}
+.tarjeta a { display: block; color: inherit; text-decoration: none; }
 
 .tarjeta img {
     display: block;
@@ -142,28 +122,27 @@ nav a:hover {
     transition: filter 0.3s;
 }
 
-.tarjeta h3 {
-    text-align: center;
-    padding: 0.5em 0;
-    margin: 0;
-}
+.tarjeta h3 { text-align: center; padding: 0.5em 0; margin: 0; }
 
 .tarjeta:hover {
     transform: rotate(-2deg) scale(1.04);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
 }
+.tarjeta:hover img { filter: grayscale(0%); }
 
-.tarjeta:hover img {
-    filter: grayscale(0%);
+/* --- Barras (izquierda) + tema aparte (derecha) --- */
+.bloques {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2em;
+    max-width: 1100px;
+    margin: 4em auto;
 }
 
-/* --- Bloques de texto en tonos morados --- */
-.bloques {
+.barras {
     display: flex;
     flex-direction: column;
-    gap: 2em;
-    max-width: 1000px;
-    margin: 3em auto;
+    gap: 1.5em;
 }
 
 .bloque {
@@ -182,16 +161,9 @@ nav a:hover {
 }
 
 .herramientas { background-color: #2e2060; }
-
-.reflexion {
-    background-color: #43318a;
-    padding: 4em 2em;
-    font-size: 1.2em;
-}
-
+.reflexion { background-color: #43318a; padding: 3em 1.5em; }
+.contacto { background-color: #5b3fb0; }
 .pelicula { background-color: #5b3fb0; }
-
-.contacto { background-color: #7c5ad6; }
 .contacto a { color: #ffffff; }
 
 .etiquetas {
@@ -209,40 +181,54 @@ nav a:hover {
     background-color: rgba(255, 255, 255, 0.15);
 }
 
-/* --- Pie de página --- */
-footer {
+/* --- Botón grande de la película --- */
+.tema-aparte {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    opacity: 0.7;
+    padding: 2em 1.5em;
+    border-radius: 20px;
+    background: linear-gradient(160deg, #a588f4, #6a4bc4);
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* --- Responsivo: tablet --- */
+.tema-aparte:hover {
+    transform: scale(1.05) rotate(1deg);
+    box-shadow: 0 14px 40px rgba(165, 136, 244, 0.6);
+}
+
+.tema-aparte span { font-size: 0.9em; opacity: 0.85; }
+.tema-aparte p { font-weight: 700; margin: 0; }
+
+.volver {
+    display: inline-block;
+    margin-top: 1.5em;
+    padding: 0.7em 2em;
+    border-radius: 50px;
+    background-color: #a588f4;
+    color: #0b1d3a;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+main.simple { max-width: 800px; margin: 3em auto; }
+
+footer { text-align: center; opacity: 0.7; }
+
 @media (max-width: 1000px) {
-    #container {
-        grid-template-columns: 1fr;
-    }
-
-    .intro {
-        order: -1;
-    }
-
-    .galeria {
-        grid-template-columns: repeat(4, 1fr);
-    }
+    #container { grid-template-columns: 1fr; }
+    .intro { order: -1; }
+    .galeria { grid-template-columns: repeat(4, 1fr); }
+    .bloques { grid-template-columns: 1fr; }
 }
 
-/* --- Responsivo: celular --- */
 @media (max-width: 600px) {
-    body {
-        padding: 0 1em 1em;
-    }
-
-    .galeria {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .reflexion {
-        padding: 2.5em 1.2em;
-    }
+    body { padding: 0 1em 1em; }
+    .galeria { grid-template-columns: repeat(2, 1fr); }
 }
-
 
