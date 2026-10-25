@@ -1,117 +1,145 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700&family=DM+Sans:ital,wght@0,400;0,500;0,700;1,400&display=swap');
-/* --- Estilos Generales --- */
+
+/* --- Estilos generales --- */
+html {
+    scroll-behavior: smooth;                     /* 1 */
+}
+
 body {
-    font-family: sans-serif;
-    margin: 70px;
-    margin-top:0;
-    padding: 2em;
+    font-family: 'DM Sans', sans-serif;
+    margin: 0;
+    padding: 0 2em 2em;
     background-color: #0b1d3a;
     color: #ffffff;
-}
-
-
-h1, h2 {
-    font-family: 'Outfit';
-    color: #ffffff;
-}
-
-h3{
-    font-family: 'DM Sans';
-    font-size: 1em;
-}
-
-/* --- Contenedor Principal --- */
-#container {
-    display: grid;
-    /* Define 2 columnas: la primera ocupa 1 fracción, la segunda 2 fracciones */
-    grid-template-columns: 1fr 1.5fr 1fr;
-    gap: 2em; /* Espacio entre las columnas */
-    align-items: center; /* Alinea los items al inicio */
-}
-
-/* --- Columna Izquierda: Intro --- */
-.intro {
-    /* Por defecto, se ubica en la primera columna del grid */
-    display: flex;
-    flex-direction: column; /* Organiza los elementos internos en una columna */
-    justify-content: center; /* Centra el contenido verticalmente */
-}
-
-.intro p {
-    /* El párrafo ya usa el ancho de su contenedor por defecto */
-    font-family: 'DM Sans';
-    text-align: center;
     line-height: 1.6;
 }
 
-.intro a {
-    /* El ancla del botón se centrará gracias al 'align-self' */
-    align-self: center; /* Centra este elemento específico en el eje transversal */
-    margin-top: 1em;
+h1, h2 {
+    font-family: 'Outfit', sans-serif;
+    color: #ffffff;
 }
 
-.intro button {
-    font-family: 'Outfit';
+h3 {
+    font-family: 'DM Sans', sans-serif;
     font-size: 1em;
-    padding: 15px 45px;
-    margin-top: 30px;
-    border: none;
-    background-color: #a588f4;
-    color: #000;
- 
-    cursor: pointer;
-    border-radius: 50px;
-    
 }
 
-.intro button:hover {
-    background: #ffffff; ;
-    color: #0b1d3a;
-
+section {
+    scroll-margin-top: 8em;
 }
 
+/* --- Cabecera fija --- */
+header {
+    position: sticky;                            /* 2 */
+    top: 0;
+    z-index: 10;
+    text-align: center;
+    padding: 1em 0 0.6em;
+    background: rgba(11, 29, 58, 0.75);
+    backdrop-filter: blur(10px);                 /* 3 */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
 
-/* Columna Derecha: Proyectos */
-.proyectos {
+header h1 {
+    margin: 0;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    text-shadow: 0 0 20px rgba(165, 136, 244, 0.7);  /* 4 */
+    letter-spacing: 1px;                         /* 5 */
+    animation: aparecer 1.2s ease-out;           /* 6 */
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(-20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    margin-top: 0.4em;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color 0.2s, transform 0.2s;      /* 7 */
+}
+
+nav a:hover {
+    color: #a588f4;
+    transform: translateY(-2px);                 /* 8 */
+}
+
+/* --- Contenedor principal: tareas | texto | tareas --- */
+#container {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr 1fr;
+    gap: 2em;
+    align-items: center;
+    max-width: 1300px;
+    margin: 2.5em auto;
+}
+
+/* --- Texto central --- */
+.intro {
     display: flex;
     flex-direction: column;
-    /* Por defecto, se ubica en la segunda columna del grid */
+    align-items: center;
+    text-align: center;
 }
 
-/* --- Galería de Proyectos --- */
+.intro p {
+    line-height: 1.6;
+}
+
+.boton {
+    margin-top: 1.5em;
+    padding: 0.9em 2.5em;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #a588f4, #7f9cf5);   /* 9 */
+    color: #0b1d3a;
+    font-family: 'Outfit', sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(165, 136, 244, 0.35);        /* 10 */
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.boton:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 10px 28px rgba(165, 136, 244, 0.6);
+}
+
+/* --- Galerías de tareas (4 a cada lado) --- */
 .galeria {
     display: grid;
-    /* Define 3 columnas de igual tamaño */
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5em; /* Espacio entre las tarjetas */
+    gap: 1.2em;
 }
 
-/* --- Tarjetas Individuales --- */
 .tarjeta {
     background-color: #13294b;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    overflow: hidden; /* Asegura que la imagen no se salga de los bordes redondeados */
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .tarjeta a {
-    /* El ancla ocupa todo el espacio de su columna en la galería */
-    display: block; /* Permite que el ancla ocupe todo el espacio */
-    width: 100%;
-    text-decoration: none;
+    display: block;
     color: inherit;
-    transition: transform 0.2s ease-in-out;
-}
-
-.tarjeta a:hover {
-    filter: brightness(70%); /* Aplica un filtro de brillo al 70% (más oscuro) */
-    transform: scale(1.05); /* Efecto de zoom al pasar el mouse */
+    text-decoration: none;
 }
 
 .tarjeta img {
-    /* La imagen se ajusta al ancho del ancla */
+    display: block;
     width: 100%;
-    display: block; /* Elimina espacios en blanco debajo de la imagen */
+    aspect-ratio: 1 / 1;                         /* 11 */
+    object-fit: cover;                           /* 12 */
+    filter: grayscale(70%);                      /* 13 */
+    transition: filter 0.3s;
 }
 
 .tarjeta h3 {
@@ -120,41 +148,101 @@ h3{
     margin: 0;
 }
 
-header { text-align:center; }
-.herramientas, .reflexion, .contacto {
-    grid-column: 1 / -1;
+.tarjeta:hover {
+    transform: rotate(-2deg) scale(1.04);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+}
+
+.tarjeta:hover img {
+    filter: grayscale(0%);
+}
+
+/* --- Bloques de texto en tonos morados --- */
+.bloques {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    max-width: 1000px;
+    margin: 3em auto;
+}
+
+.bloque {
     text-align: center;
     padding: 2em 1.5em;
     border-radius: 20px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0.15));
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-.herramientas { background: #13294b; }
+.bloque:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 14px 40px rgba(124, 90, 214, 0.5);
+}
+
+.herramientas { background-color: #2e2060; }
 
 .reflexion {
-    background: #1d4380;
+    background-color: #43318a;
     padding: 4em 2em;
     font-size: 1.2em;
 }
 
-.contacto { background: #2f6bd1; }
-.contacto a { color: #ffffff; }
-/* --- Media Query para pantallas pequeñas --- */
-@media (max-width: 900px) {
-    
-    /* Ajusta los márgenes del body para aprovechar el espacio */
-    body {
-        margin: 20px;
-        padding: 1em;
-    }
+.pelicula { background-color: #5b3fb0; }
 
-    /* Cambia el contenedor principal a una sola columna */
+.contacto { background-color: #7c5ad6; }
+.contacto a { color: #ffffff; }
+
+.etiquetas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.8em;
+    padding: 0;
+    list-style: none;
+}
+
+.etiquetas li {
+    padding: 0.4em 1.2em;
+    border-radius: 50px;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* --- Pie de página --- */
+footer {
+    text-align: center;
+    opacity: 0.7;
+}
+
+/* --- Responsivo: tablet --- */
+@media (max-width: 1000px) {
     #container {
         grid-template-columns: 1fr;
     }
 
-    /* Cambia la galería de proyectos a una sola columna */
+    .intro {
+        order: -1;
+    }
+
     .galeria {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(4, 1fr);
     }
 }
+
+/* --- Responsivo: celular --- */
+@media (max-width: 600px) {
+    body {
+        padding: 0 1em 1em;
+    }
+
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .reflexion {
+        padding: 2.5em 1.2em;
+    }
+}
+
+
