@@ -11,7 +11,7 @@ body {
     line-height: 1.6;
 }
 
-/* --- Fondo de estrellitas opacas en movimiento --- */
+/* --- Fondo: estrellas con forma de estrella, en movimiento --- */
 body::before,
 body::after {
     content: "";
@@ -22,36 +22,29 @@ body::after {
 }
 
 body::before {
-    background-image:
-        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.55), transparent),
-        radial-gradient(1.5px 1.5px at 90px 120px, rgba(255,255,255,0.4), transparent),
-        radial-gradient(2px 2px at 160px 70px, rgba(255,255,255,0.5), transparent),
-        radial-gradient(1px 1px at 230px 180px, rgba(255,255,255,0.4), transparent);
-    background-size: 260px 220px;
-    animation: estrellas-a 90s linear infinite, titilar 4s ease-in-out infinite alternate;   /* 3 */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cg fill='white'%3E%3Cpolygon fill-opacity='0.6' transform='translate(30,40) scale(0.8)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.5' transform='translate(120,15) scale(0.5)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.65' transform='translate(210,70) scale(1)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.5' transform='translate(270,150) scale(0.55)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.5' transform='translate(80,130) scale(0.6)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.6' transform='translate(160,200) scale(0.9)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.5' transform='translate(40,250) scale(0.55)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.55' transform='translate(240,260) scale(0.7)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 300px 300px;
+    animation: mover-a 70s linear infinite, titilar 4s ease-in-out infinite alternate;   /* 3 */
 }
 
 body::after {
-    background-image:
-        radial-gradient(1.5px 1.5px at 50px 60px, rgba(200,180,255,0.45), transparent),
-        radial-gradient(2.5px 2.5px at 180px 140px, rgba(255,255,255,0.35), transparent),
-        radial-gradient(1px 1px at 290px 40px, rgba(255,255,255,0.4), transparent);
-    background-size: 340px 300px;
-    animation: estrellas-b 140s linear infinite, titilar 6s ease-in-out infinite alternate-reverse;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='440' height='440'%3E%3Cg fill='%23d2beff'%3E%3Cpolygon fill-opacity='0.55' transform='translate(60,90) scale(0.65)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.6' transform='translate(190,30) scale(0.9)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.5' transform='translate(320,110) scale(0.55)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.6' transform='translate(250,230) scale(0.8)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.55' transform='translate(100,300) scale(0.95)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.5' transform='translate(380,340) scale(0.6)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.5' transform='translate(20,400) scale(0.5)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3Cpolygon fill-opacity='0.55' transform='translate(180,390) scale(0.65)' points='10,0 12.9,6.9 20,7.6 14.6,12.4 16.2,19.5 10,15.8 3.8,19.5 5.4,12.4 0,7.6 7.1,6.9'/%3E%3C/g%3E%3C/svg%3E");
+    background-size: 440px 440px;
+    animation: mover-b 110s linear infinite, titilar 6s ease-in-out infinite alternate-reverse;
 }
 
-@keyframes estrellas-a {
+@keyframes mover-a {
     from { background-position: 0 0; }
-    to   { background-position: 260px 440px; }
+    to   { background-position: 300px 300px; }
 }
 
-@keyframes estrellas-b {
+@keyframes mover-b {
     from { background-position: 0 0; }
-    to   { background-position: -340px 600px; }
+    to   { background-position: -440px 440px; }
 }
 
 @keyframes titilar {
-    from { opacity: 0.45; }
+    from { opacity: 0.5; }
     to   { opacity: 1; }
 }
 
@@ -267,5 +260,4 @@ footer { text-align: center; opacity: 0.7; }
 @media (prefers-reduced-motion: reduce) {
     * { animation: none !important; transition: none !important; }
 }
-
 
