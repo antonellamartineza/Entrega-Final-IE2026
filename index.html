@@ -126,7 +126,9 @@
     <section id="pelicula" class="tema-aparte">
     <h2>Mis películas favoritas</h2>
 
-    <div class="visor" id="visor">
+    
+<div class="visor" id="visor" onclick="var v=this; if (v.scrollLeft + v.clientWidth >= v.scrollWidth - 5) { v.scrollTo({left: 0, behavior: 'smooth'}); } else { v.scrollBy({left: v.clientWidth, behavior: 'smooth'}); }">
+
         <article class="slide">
             <img src="assets/peli1.jpg" alt="Póster de Película 1">
             <h3>Nombre película 1</h3>
@@ -159,10 +161,8 @@
         </article>
     </div>
 
-    <div class="flechas">
-        <button type="button" aria-label="Anterior" onclick="document.getElementById('visor').scrollBy({left: -document.getElementById('visor').clientWidth, behavior: 'smooth'})">←</button>
-        <button type="button" aria-label="Siguiente" onclick="document.getElementById('visor').scrollBy({left: document.getElementById('visor').clientWidth, behavior: 'smooth'})">→</button>
-    </div>
+   <p class="toca">
+
 </section>
 
 
