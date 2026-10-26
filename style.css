@@ -231,4 +231,11 @@ footer { text-align: center; opacity: 0.7; }
     body { padding: 0 1em 1em; }
     .galeria { grid-template-columns: repeat(2, 1fr); }
 }
+.visor { cursor: pointer; }
+
+.toca {
+    margin: 0.8em 0 0;
+    font-size: 0.85em;
+    opacity: 0.8;
+}
 
