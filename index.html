@@ -123,11 +123,48 @@
         </section>
     </div>
 
-    <a id="pelicula" class="tema-aparte" href="pelicula.html">
-        <span>Tema aparte</span>
-        <h2>Mi película favorita</h2>
-        <p>Ver más →</p>
-    </a>
+    <section id="pelicula" class="tema-aparte">
+    <h2>Mis películas favoritas</h2>
+
+    <div class="visor" id="visor">
+        <article class="slide">
+            <img src="assets/peli1.jpg" alt="Póster de Película 1">
+            <h3>Nombre película 1</h3>
+            <p>Dirigida por Nombre Director</p>
+            <p class="anio">2000</p>
+        </article>
+        <article class="slide">
+            <img src="assets/peli2.jpg" alt="Póster de Película 2">
+            <h3>Nombre película 2</h3>
+            <p>Dirigida por Nombre Director</p>
+            <p class="anio">2000</p>
+        </article>
+        <article class="slide">
+            <img src="assets/peli3.jpg" alt="Póster de Película 3">
+            <h3>Nombre película 3</h3>
+            <p>Dirigida por Nombre Director</p>
+            <p class="anio">2000</p>
+        </article>
+        <article class="slide">
+            <img src="assets/peli4.jpg" alt="Póster de Película 4">
+            <h3>Nombre película 4</h3>
+            <p>Dirigida por Nombre Director</p>
+            <p class="anio">2000</p>
+        </article>
+        <article class="slide">
+            <img src="assets/peli5.jpg" alt="Póster de Película 5">
+            <h3>Nombre película 5</h3>
+            <p>Dirigida por Nombre Director</p>
+            <p class="anio">2000</p>
+        </article>
+    </div>
+
+    <div class="flechas">
+        <button type="button" aria-label="Anterior" onclick="document.getElementById('visor').scrollBy({left: -document.getElementById('visor').clientWidth, behavior: 'smooth'})">←</button>
+        <button type="button" aria-label="Siguiente" onclick="document.getElementById('visor').scrollBy({left: document.getElementById('visor').clientWidth, behavior: 'smooth'})">→</button>
+    </div>
+</section>
+
 
 </div>
 
