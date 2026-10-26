@@ -248,7 +248,7 @@ footer { text-align: center; opacity: 0.7; }
 @media (max-width: 1000px) {
     #container { grid-template-columns: 1fr; }
     .intro { order: -1; position: static; }
-    .galeria { grid-template-columns: repeat(2, 1fr); }
+    .galeria { grid-template-columns: repeat(3, 1fr); }
     .bloques { grid-template-columns: 1fr; }
 }
 
