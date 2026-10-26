@@ -11,27 +11,72 @@ body {
     line-height: 1.6;
 }
 
+/* --- Fondo de estrellitas opacas en movimiento --- */
+body::before,
+body::after {
+    content: "";
+    position: fixed;                             /* 2 */
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+}
+
+body::before {
+    background-image:
+        radial-gradient(2px 2px at 20px 30px, rgba(255,255,255,0.55), transparent),
+        radial-gradient(1.5px 1.5px at 90px 120px, rgba(255,255,255,0.4), transparent),
+        radial-gradient(2px 2px at 160px 70px, rgba(255,255,255,0.5), transparent),
+        radial-gradient(1px 1px at 230px 180px, rgba(255,255,255,0.4), transparent);
+    background-size: 260px 220px;
+    animation: estrellas-a 90s linear infinite, titilar 4s ease-in-out infinite alternate;   /* 3 */
+}
+
+body::after {
+    background-image:
+        radial-gradient(1.5px 1.5px at 50px 60px, rgba(200,180,255,0.45), transparent),
+        radial-gradient(2.5px 2.5px at 180px 140px, rgba(255,255,255,0.35), transparent),
+        radial-gradient(1px 1px at 290px 40px, rgba(255,255,255,0.4), transparent);
+    background-size: 340px 300px;
+    animation: estrellas-b 140s linear infinite, titilar 6s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes estrellas-a {
+    from { background-position: 0 0; }
+    to   { background-position: 260px 440px; }
+}
+
+@keyframes estrellas-b {
+    from { background-position: 0 0; }
+    to   { background-position: -340px 600px; }
+}
+
+@keyframes titilar {
+    from { opacity: 0.45; }
+    to   { opacity: 1; }
+}
+
 h1, h2 { font-family: 'Outfit', sans-serif; color: #ffffff; }
 h3 { font-family: 'DM Sans', sans-serif; font-size: 1em; }
 section { scroll-margin-top: 8em; }
 
+/* --- Cabecera fija --- */
 header {
-    position: sticky;                            /* 2 */
+    position: sticky;                            /* 4 */
     top: 0;
     z-index: 10;
     text-align: center;
     padding: 1em 0 0.8em;
     background: rgba(11, 29, 58, 0.8);
-    backdrop-filter: blur(10px);                 /* 3 */
+    backdrop-filter: blur(10px);                 /* 5 */
     border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 header h1 {
     margin: 0;
     font-size: clamp(1.8rem, 4vw, 2.8rem);
-    text-shadow: 0 0 20px rgba(165, 136, 244, 0.7);   /* 4 */
-    letter-spacing: 1px;                         /* 5 */
-    animation: aparecer 1.2s ease-out;           /* 6 */
+    text-shadow: 0 0 20px rgba(165, 136, 244, 0.7);   /* 6 */
+    letter-spacing: 1px;                         /* 7 */
+    animation: aparecer 1.2s ease-out;           /* 8 */
 }
 
 @keyframes aparecer {
@@ -55,14 +100,15 @@ nav a {
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
     text-decoration: none;
-    transition: transform 0.2s, background-color 0.2s;   /* 7 */
+    transition: transform 0.2s, background-color 0.2s;   /* 9 */
 }
 
 nav a:hover {
     background-color: #ffffff;
-    transform: translateY(-3px);                 /* 8 */
+    transform: translateY(-3px);                 /* 10 */
 }
 
+/* --- Contenedor: tareas | texto | tareas --- */
 #container {
     display: grid;
     grid-template-columns: 1fr 1.5fr 1fr;
@@ -83,12 +129,12 @@ nav a:hover {
     margin-top: 1.5em;
     padding: 0.9em 2.5em;
     border-radius: 50px;
-    background: linear-gradient(135deg, #a588f4, #7f9cf5);   /* 9 */
+    background: linear-gradient(135deg, #a588f4, #7f9cf5);   /* 11 */
     color: #0b1d3a;
     font-family: 'Outfit', sans-serif;
     font-weight: 700;
     text-decoration: none;
-    box-shadow: 0 6px 20px rgba(165, 136, 244, 0.35);        /* 10 */
+    box-shadow: 0 6px 20px rgba(165, 136, 244, 0.35);        /* 12 */
     transition: transform 0.25s, box-shadow 0.25s;
 }
 
@@ -97,6 +143,7 @@ nav a:hover {
     box-shadow: 0 10px 28px rgba(165, 136, 244, 0.6);
 }
 
+/* --- Galerías de tareas --- */
 .galeria {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -116,9 +163,9 @@ nav a:hover {
 .tarjeta img {
     display: block;
     width: 100%;
-    aspect-ratio: 1 / 1;                         /* 11 */
-    object-fit: cover;                           /* 12 */
-    filter: grayscale(70%);                      /* 13 */
+    aspect-ratio: 1 / 1;                         /* 13 */
+    object-fit: cover;                           /* 14 */
+    filter: grayscale(70%);                      /* 15 */
     transition: filter 0.3s;
 }
 
@@ -130,7 +177,7 @@ nav a:hover {
 }
 .tarjeta:hover img { filter: grayscale(0%); }
 
-/* --- Barras (izquierda) + tema aparte (derecha) --- */
+/* --- Barras (izquierda) + playlist (derecha) --- */
 .bloques {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -163,7 +210,6 @@ nav a:hover {
 .herramientas { background-color: #2e2060; }
 .reflexion { background-color: #43318a; padding: 3em 1.5em; }
 .contacto { background-color: #5b3fb0; }
-.pelicula { background-color: #5b3fb0; }
 .contacto a { color: #ffffff; }
 
 .etiquetas {
@@ -181,45 +227,29 @@ nav a:hover {
     background-color: rgba(255, 255, 255, 0.15);
 }
 
-/* --- Botón grande de la película --- */
+/* --- Playlist --- */
 .tema-aparte {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
-    padding: 2em 1.5em;
+    padding: 1.5em 1em;
     border-radius: 20px;
     background: linear-gradient(160deg, #a588f4, #6a4bc4);
-    color: #ffffff;
-    text-decoration: none;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
 }
 
-.tema-aparte:hover {
-    transform: scale(1.05) rotate(1deg);
-    box-shadow: 0 14px 40px rgba(165, 136, 244, 0.6);
+.tema-aparte iframe {
+    width: 100%;
+    border: 0;
+    border-radius: 12px;
 }
-
-.tema-aparte span { font-size: 0.9em; opacity: 0.85; }
-.tema-aparte p { font-weight: 700; margin: 0; }
-
-.volver {
-    display: inline-block;
-    margin-top: 1.5em;
-    padding: 0.7em 2em;
-    border-radius: 50px;
-    background-color: #a588f4;
-    color: #0b1d3a;
-    font-weight: 700;
-    text-decoration: none;
-}
-
-main.simple { max-width: 800px; margin: 3em auto; }
 
 footer { text-align: center; opacity: 0.7; }
 
+/* --- Responsivo: tablet --- */
 @media (max-width: 1000px) {
     #container { grid-template-columns: 1fr; }
     .intro { order: -1; }
@@ -227,15 +257,15 @@ footer { text-align: center; opacity: 0.7; }
     .bloques { grid-template-columns: 1fr; }
 }
 
+/* --- Responsivo: celular --- */
 @media (max-width: 600px) {
     body { padding: 0 1em 1em; }
     .galeria { grid-template-columns: repeat(2, 1fr); }
 }
-.visor { cursor: pointer; }
 
-.toca {
-    margin: 0.8em 0 0;
-    font-size: 0.85em;
-    opacity: 0.8;
+/* --- Accesibilidad: sin animaciones si el usuario las desactiva --- */
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
 }
+
 
